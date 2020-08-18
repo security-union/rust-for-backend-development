@@ -1,0 +1,24 @@
+[package]
+name = "rest-api"
+version = "0.1.0"
+authors = ["Griffin Obeid <griffobeid@gmail.com>"]
+edition = "2018"
+
+[lib]
+name = "lib"
+path = "src/lib.rs"
+
+[[bin]]
+name = "rest-api"
+path = "src/bin.rs"
+
+[dependencies]
+rocket = "0.4"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+[dependencies.rocket_contrib]
+version = "0.4"
+default-features = false
+features = ["json"]
+

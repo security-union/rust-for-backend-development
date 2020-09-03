@@ -1,4 +1,4 @@
-# Simple Rocket API Boilerplate 🚀🔥
+# Rust From 0 to God 🚀🔥
 
 This is a simple Rocket Json HTTP API boilerplate for starting your own API.
 

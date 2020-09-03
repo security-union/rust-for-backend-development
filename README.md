@@ -1,15 +1,10 @@
 # Rust From 0 to God 🚀🔥
 
-This is a simple Rocket Json HTTP API boilerplate for starting your own API.
+This is a very practical approach to learn Rust and start building working software from day 1.
 
-Make sure you are using the nightly channel.
+## Social Media
+[YouTube](https://www.youtube.com/c/SecurityUnion)
 
-```sh
-rustup toolchain install nightly
-rustup default nightly
-```
+[Facebook](https://www.facebook.com/muchsecure)
 
-Clone this project and run it:
-```sh
-cargo run
-```
+[Instagram](https://www.instagram.com/security.union/)

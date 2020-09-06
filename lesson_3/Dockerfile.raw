@@ -1,0 +1,7 @@
+FROM rust:1.41.0
+
+WORKDIR /app
+
+COPY . /app
+
+RUN rustup default nightly-2020-05-18

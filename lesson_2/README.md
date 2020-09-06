@@ -1,4 +1,4 @@
-# Lession 2: Simple Rocket API Boilerplate 🚀🔥
+# Lesson 2: Simple Rocket API Boilerplate 🚀🔥
 
 This is a simple Rocket Json HTTP API boilerplate for starting your own API.
 

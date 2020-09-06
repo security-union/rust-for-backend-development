@@ -1,6 +1,6 @@
 FROM rust:1.41.0 as build
 
-WORKDIR /usr/src/http_gateway
+WORKDIR /usr/src/rest-api
 COPY . .
 
 RUN rustup default nightly-2020-05-18

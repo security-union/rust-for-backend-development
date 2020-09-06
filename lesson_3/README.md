@@ -32,3 +32,12 @@ docker run --rm -it -p 8000:8000 \
 ```
 cargo watch -x 'run --bin rest-api'
 ```
+
+## Docker + Production Image
+
+1. build docker image
+```
+docker build -t rust_json_api_prod . -f Dockerfile.production
+```
+
+2. Push it to your preferred docker image repository

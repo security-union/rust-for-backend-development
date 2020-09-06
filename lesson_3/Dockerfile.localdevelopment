@@ -6,3 +6,4 @@ RUN rustup default nightly-2020-05-18
 
 RUN cargo install cargo-watch
 
+STOPSIGNAL SIGINT

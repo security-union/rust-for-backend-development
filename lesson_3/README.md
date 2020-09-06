@@ -9,7 +9,7 @@ docker build -t rust_json_raw_docker -f Dockerfile.raw .
 
 2. run docker container and create and interactive tty session.
 ```
-docker run --rm -it -p 8000:8000 --name rust_json rust_json_raw_docker
+docker run --rm -it -p 8000:8000 --name rust_json_raw rust_json_raw_docker
 ```
 
 3. after "connecting" to the container, execute `cargo run`
@@ -50,3 +50,48 @@ make local_run
 ```
 
 Please execute `ctrl+pq`
+
+## Docker image commands
+
+```
+docker image ls
+```
+
+Remove dangling images
+
+```
+docker image prune
+```
+
+Remove dangling AND unused images.
+```
+docker image prune -all
+```
+
+## Docker system commands
+
+Remove all unused containers, networks, images (both dangling and unreferenced), and optionally, volumes.
+```
+docker system prune
+```
+
+```
+docker system prune --all
+```
+
+## Docker containers
+
+```
+docker ps -aq
+```
+
+Stop all running containers
+
+```
+docker stop $(docker ps -aq)
+```
+Remove all containers
+
+```
+docker rm $(docker ps -aq)
+```

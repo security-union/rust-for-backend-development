@@ -1,4 +1,4 @@
-# Rust From 0 to God 🚀🔥
+# Rust for the Back-End: From 0 to God 🚀🔥
 
 This is a very practical approach to learn Rust and start building working software from day 1.
 

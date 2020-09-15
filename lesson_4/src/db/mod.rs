@@ -13,6 +13,7 @@
 use std::env;
 use postgres::NoTls;
 use postgres::error::Error;
+use postgres::Row;
 use r2d2_postgres::PostgresConnectionManager;
 use r2d2::{Pool, PooledConnection};
 
@@ -66,10 +67,20 @@ pub fn read_movie(title: String, db: &mut PooledConnection<PostgresConnectionMan
     Ok(movie)
 }
 
-pub fn insert_movie(movie: Movie, db: &mut PooledConnection<PostgresConnectionManager<NoTls>>) -> Option<Movie> {
-    None
+pub fn insert_movie(movie: &Movie, db: &mut PooledConnection<PostgresConnectionManager<NoTls>>) -> Result<Vec<Row>, Error> {
+    let statement = db
+        .prepare(
+            "insert into movies (title, genre) values ($1, $2)",
+        )?;
+
+    db.query(&statement, &[&movie.title, &movie.genre])
 }
 
-pub fn delete_movie(title: String, db: &mut PooledConnection<PostgresConnectionManager<NoTls>>) -> bool {
-    true
+pub fn delete_movie(title: String, db: &mut PooledConnection<PostgresConnectionManager<NoTls>>) -> Result<Vec<Row>, Error> {
+    let statement = db
+        .prepare(
+            "delete from movies where title = $1",
+        )?;
+
+    db.query(&statement, &[&title])
 }

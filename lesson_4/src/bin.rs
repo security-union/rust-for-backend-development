@@ -5,7 +5,7 @@ extern crate rocket;
 
 use rocket_contrib::json::Json;
 use rocket::http::RawStr;
-use rocket::{Request, Rocket, State};
+use rocket::{State};
 
 use lib::db;
 use lib::db::get_pool;
@@ -30,13 +30,19 @@ fn get_movie(title: &RawStr, state: State<Storage>) -> Json<Option<Movie>> {
 #[post("/", data="<movie>")]
 fn create_movie(movie: Json<Movie>, state: State<Storage>) -> Json<Option<Movie>> {
     let mut db = state.database.get().unwrap();
-    Json(db::insert_movie(movie.0, &mut db))
+    match db::insert_movie(&movie.0, &mut db).ok() {
+        Some(_) => Json(Some(movie.0)),
+        None => Json(None)
+    }
 }
 
 #[delete("/<title>")]
 fn delete_movie(title: &RawStr, state: State<Storage>) -> Json<bool> {
     let mut db = state.database.get().unwrap();
-    Json(db::delete_movie(title.url_decode().expect("Failed to decode title."), &mut db))
+    match db::delete_movie(title.url_decode().expect("Failed to decode title."), &mut db).ok() {
+        Some(_) => Json(true),
+        None => Json(false)
+    }
 }
 
 fn rocket() -> rocket::Rocket {

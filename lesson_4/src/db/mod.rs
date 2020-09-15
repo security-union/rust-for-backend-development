@@ -81,6 +81,5 @@ pub fn delete_movie(title: String, db: &mut PooledConnection<PostgresConnectionM
         .prepare(
             "delete from movies where title = $1",
         )?;
-
     db.query(&statement, &[&title])
 }

@@ -29,19 +29,18 @@ fn get_movie(title: &RawStr, state: State<Storage>) -> Json<Option<Movie>> {
 #[post("/", data = "<movie>")]
 fn create_movie(movie: Json<Movie>, state: State<Storage>) -> Json<Option<Movie>> {
     let mut db = state.database.get().unwrap();
-    match db::insert_movie(&movie.0, &mut db).ok() {
-        Some(_) => Json(Some(movie.0)),
-        None => Json(None)
-    }
+    let movie: Option<Movie> = db::insert_movie(&movie.0, &mut db)
+        .ok()
+        .map(|_| movie.0);
+    Json(movie)
 }
 
 #[delete("/<title>")]
 fn delete_movie(title: &RawStr, state: State<Storage>) -> Json<bool> {
     let mut db = state.database.get().unwrap();
-    match db::delete_movie(title.url_decode().expect("Failed to decode title."), &mut db).ok() {
-        Some(_) => Json(true),
-        None => Json(false)
-    }
+    let parsed_title = title.url_decode().expect("Failed to decode title.");
+    let result: bool = db::delete_movie(parsed_title, &mut db).is_ok();
+    Json(result)
 }
 
 fn rocket() -> rocket::Rocket {

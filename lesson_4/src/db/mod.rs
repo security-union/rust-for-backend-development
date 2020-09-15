@@ -1,3 +1,8 @@
+use postgres::error::Error;
+use postgres::NoTls;
+use postgres::Row;
+use r2d2::{Pool, PooledConnection};
+use r2d2_postgres::PostgresConnectionManager;
 /**
  * Copyright [2020] [Dario Alessandro Lencina Talarico]
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,11 +16,6 @@
  * limitations under the License.
  */
 use std::env;
-use postgres::NoTls;
-use postgres::error::Error;
-use postgres::Row;
-use r2d2_postgres::PostgresConnectionManager;
-use r2d2::{Pool, PooledConnection};
 
 use crate::model::Movie;
 
@@ -36,15 +36,15 @@ pub fn read_movies(db: &mut PooledConnection<PostgresConnectionManager<NoTls>>) 
         )?;
 
     let movies: Vec<Movie> = db.query(&statement, &[])?
-    .iter()
-    .map(|row| {
-        let title: String = row.get("title");
-        let genre: String = row.get("genre");
-        Movie {
-            title,
-            genre
-        }
-    }).collect();
+        .iter()
+        .map(|row| {
+            let title: String = row.get("title");
+            let genre: String = row.get("genre");
+            Movie {
+                title,
+                genre,
+            }
+        }).collect();
     Ok(movies)
 }
 
@@ -61,7 +61,7 @@ pub fn read_movie(title: String, db: &mut PooledConnection<PostgresConnectionMan
             let genre: String = row.get("genre");
             Some(Movie {
                 title,
-                genre
+                genre,
             })
         });
     Ok(movie)

@@ -1,4 +1,4 @@
-# Rust for Back-End Development: From 0 to God 🚀🔥
+# RUST FOR BACK-END DEVELOPMENT: FROM NEWBIE TO GOD 🚀🔥
 
 This is a very practical approach to learn Rust and start building working software from day 1.
 

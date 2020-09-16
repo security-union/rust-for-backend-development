@@ -2,7 +2,7 @@
 
 This is a very practical approach to learn Rust and start building working software from day 1.
 
-## RUST FOR BACKEND COURSE
+## RUST FOR BACK-END COURSE
 [YouTube](https://www.youtube.com/watch?v=nnuaiW1OhjA&list=PLxM2CWwQlzBt6-t8MK1Y1PQBJ5aOoJfUB)
 
 ## Social Media

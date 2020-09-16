@@ -1,0 +1,58 @@
+version: "3.4"
+services:
+  library:
+    container_name: "library"
+    command: cargo watch -x 'run --bin rest-api'
+    build:
+      dockerfile: Dockerfile.localdevelopment
+      context: .
+      cache_from:
+        - rust:1.42.0
+    links:
+      - postgres
+    depends_on:
+      - postgres
+    environment:
+      - PG_URL=postgres://postgres:docker@postgres:5432/library?sslmode=disable
+      - PG_POOL_SIZE=10
+
+    networks:
+      - library-network
+    tty: true
+    volumes:
+      - type: bind
+        source: ./
+        target: /app
+    ports:
+      - "8000:8000"
+
+  # Middleware
+  postgres:
+    image: postgres:12
+    environment:
+      PGPASSWORD: "docker"
+    networks:
+      - library-network
+    ports:
+      - "5432:5432"
+
+  dbmate:
+    build:
+      context: .
+      dockerfile: Dockerfile.dbmate
+    command:
+      - /app/create_db.sh
+    environment:
+      DATABASE_URL: "postgres://postgres:docker@postgres:5432/library?sslmode=disable"
+    depends_on:
+      - postgres
+    links:
+      - postgres
+    networks:
+      - library-network
+    volumes:
+      - ./db:/app/db
+
+networks:
+  library-network:
+    driver: bridge

@@ -15,6 +15,18 @@ docker-compose up -d
 docker exec -ti lesson_4_postgres_1 psql -U postgres -d library
 ```
 
+## List movies
+
+```
+curl http://localhost:8000/movies
+```
+
+## Get a particular movie
+
+```
+curl http://localhost:8000/movies/John%20Wick
+```
+
 ## Insert a movie using curl
 
 ```

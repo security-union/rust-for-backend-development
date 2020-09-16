@@ -29,10 +29,10 @@ fn get_movie(title: &RawStr, state: State<Storage>) -> Json<Option<Movie>> {
 #[post("/", data = "<movie>")]
 fn create_movie(movie: Json<Movie>, state: State<Storage>) -> Json<Option<Movie>> {
     let mut db = state.database.get().unwrap();
-    let movie: Option<Movie> = db::insert_movie(&movie.0, &mut db)
+    let inserted_movie: Option<Movie> = db::insert_movie(&movie.0, &mut db)
         .ok()
         .map(|_| movie.0);
-    Json(movie)
+    Json(inserted_movie)
 }
 
 #[delete("/<title>")]

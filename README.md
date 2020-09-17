@@ -1,5 +1,7 @@
 # RUST FOR BACK-END DEVELOPMENT: FROM NEWBIE TO GOD 🚀🔥
 
+![From newbie to god](thumb.png)
+
 This is a very practical approach to learn Rust and start building working software from day 1.
 
 ## RUST FOR BACK-END COURSE

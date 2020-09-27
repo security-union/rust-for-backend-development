@@ -1,0 +1,13 @@
+FROM debian:buster-slim
+
+WORKDIR /app
+
+#Install curl
+RUN ["apt-get", "update"];
+RUN ["apt-get", "--yes", "--force-yes", "install", "curl"];
+
+# Install DB Migration tool.
+RUN ["curl", "-fsSL", "-o", "/usr/local/bin/dbmate", "https://github.com/amacneil/dbmate/releases/download/v1.6.0/dbmate-linux-amd64"]
+RUN ["chmod", "+x", "/usr/local/bin/dbmate"]
+
+COPY create_db.sh /app/create_db.sh

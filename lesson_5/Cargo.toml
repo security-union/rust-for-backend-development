@@ -1,0 +1,29 @@
+[package]
+name = "rest-api"
+version = "0.1.0"
+authors = ["Griffin Obeid <griffobeid@gmail.com>"]
+edition = "2018"
+
+[lib]
+name = "lib"
+path = "src/lib.rs"
+
+[[bin]]
+name = "rest-api"
+path = "src/bin.rs"
+
+[dependencies]
+redis = {version = "0.16.0", features = ["connection-manager"]}
+rocket = "0.4"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+postgres= {version = "0.17", features = ["with-chrono-0_4"]}
+postgres-types= {version = "0.1.1", features = ["derive"]}
+r2d2 = "0.8.8"
+r2d2_postgres = "0.16.0"
+
+[dependencies.rocket_contrib]
+version = "0.4"
+default-features = false
+features = ["json"]
+

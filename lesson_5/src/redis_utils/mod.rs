@@ -9,7 +9,7 @@ pub fn get_movies_ranking(redis: &mut redis::Connection) -> Result<Vec<RankingEn
     .zrangebyscore_withscores(
         &MOVIES_RANKING.to_string(),
         0,
-        -1
+        i64::MAX
     );
 
     return result.map(|vector| {

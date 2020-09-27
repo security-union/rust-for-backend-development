@@ -57,7 +57,10 @@ fn delete_movie(title: &RawStr, state: State<Storage>) -> Json<bool> {
 fn most_popular_movies(state: State<Storage>) -> Json<Option<Vec<RankingEntry>>> {
     let mut redis = state.redis.get_connection().unwrap();
     return get_movies_ranking(&mut redis)
-        .map_or(Json(None), |movies| Json(Some(movies)));
+        .map_or(Json(None), |mut movies| {
+            movies.reverse();
+            Json(Some(movies))
+        });
 }
 
 fn rocket() -> rocket::Rocket {

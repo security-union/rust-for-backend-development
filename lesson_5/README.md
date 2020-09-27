@@ -1,4 +1,4 @@
-# Lesson 4: Add a PostgreSQL Database 🚀🔥
+# Lesson 5: Add REDIS to your Rocket RUST API 🚀🔥
 
 ## ssh to redis docker
 ```

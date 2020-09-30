@@ -1,4 +1,9 @@
-# Lesson 4: Add a PostgreSQL Database 🚀🔥
+# Lesson 5: Add REDIS to your Rocket RUST API 🚀🔥
+
+We use Redis to keep stats of the number of queries for each movie title.
+
+ENPOINT: GET localhost:8000/movies/ranking
+
 
 ## ssh to redis docker
 ```

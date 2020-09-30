@@ -65,7 +65,8 @@ fn most_popular_movies(state: State<Storage>) -> Json<Option<Vec<RankingEntry>>>
 
 fn rocket() -> rocket::Rocket {
     let database = get_pool();
-    let redis = redis::Client::open(env::var("REDIS_URL").expect("REDIS_URL must be set")).unwrap();
+    let redis = redis::Client::open(env::var("REDIS_URL")
+        .expect("REDIS_URL must be set")).unwrap();
     let storage = Storage { database, redis };
     rocket::ignite().mount(
         "/movies",

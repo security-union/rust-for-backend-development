@@ -25,6 +25,6 @@ pub fn get_movies_ranking(redis: &mut redis::Connection) -> Result<Vec<RankingEn
 
 }
 
-pub fn increment_movie_search_count(redis: &mut redis::Connection, username: &String) -> RedisResult<()> {
-    redis.zincr(&MOVIES_RANKING.to_string(), username, 1)
+pub fn increment_movie_search_count(redis: &mut redis::Connection, title: &String) -> RedisResult<()> {
+    redis.zincr(&MOVIES_RANKING.to_string(), title, 1)
 }

@@ -1,7 +1,7 @@
 version: "3.4"
 services:
-  library:
-    container_name: "library"
+  movies:
+    container_name: "movies"
     command: cargo watch -x 'run --bin rest-api'
     build:
       dockerfile: Dockerfile.localdevelopment
@@ -17,7 +17,7 @@ services:
       - REDIS_URL=redis://redis
 
     networks:
-      - library-network
+      - movies-network
     tty: true
     volumes:
       - type: bind
@@ -32,7 +32,7 @@ services:
     environment:
       POSTGRES_PASSWORD: "docker"
     networks:
-      - library-network
+      - movies-network
     ports:
       - "5432:5432"
 
@@ -49,7 +49,7 @@ services:
     links:
       - postgres
     networks:
-      - library-network
+      - movies-network
     volumes:
       - ./db:/app/db
 
@@ -59,10 +59,10 @@ services:
     expose:
       - 6379
     networks:
-      - library-network
+      - movies-network
     ports:
       - "6379:6379"
 
 networks:
-  library-network:
+  movies-network:
     driver: bridge

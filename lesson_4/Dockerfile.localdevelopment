@@ -4,4 +4,4 @@ WORKDIR /app
 
 RUN rustup default nightly-2020-05-18
 
-RUN cargo install cargo-watch
+RUN cargo install cargo-watch = "7.4.0"

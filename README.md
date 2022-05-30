@@ -13,8 +13,3 @@ This is a very practical approach to learn Rust and start building working softw
 [Facebook](https://www.facebook.com/muchsecure)
 
 [Instagram](https://www.instagram.com/security.union/)
-
-## Company website
-[Security Union](https://securityunion.dev)
-
-[Armore](https://armore.dev)

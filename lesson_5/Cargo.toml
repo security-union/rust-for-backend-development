@@ -14,7 +14,7 @@ path = "src/bin.rs"
 
 [dependencies]
 redis = {version = "0.16.0", features = ["connection-manager"]}
-rocket = "0.4"
+rocket = "0.4.11"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 postgres= {version = "0.17", features = ["with-chrono-0_4"]}

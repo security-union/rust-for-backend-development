@@ -1,7 +1,8 @@
-FROM rust:1.41.0
+FROM rust:1.54
+
 
 WORKDIR /app
 
-RUN rustup default nightly-2020-05-18
+RUN rustup default nightly-2021-05-21
 
-RUN cargo install cargo-watch
+RUN cargo install cargo-watch --version "7.3.0"

@@ -2,7 +2,7 @@ version: "3.4"
 services:
   library:
     container_name: "library"
-    command: cargo watch --workdir . -x 'run --bin rest-api'
+    command: cargo watch -x 'run --bin rest-api'
     build:
       dockerfile: Dockerfile.localdevelopment
       context: .
